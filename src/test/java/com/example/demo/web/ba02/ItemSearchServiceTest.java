@@ -23,12 +23,17 @@ import com.example.demo.web.mapper.ItemMapper;
 @SpringBootTest
 public class ItemSearchServiceTest {
     
+    /** テスト対象、モックをInjectする対象 */
     @InjectMocks
     private ItemSearchService target;
 
+    /** モックマッパー */
     @Mock
     private ItemMapper itemMapper;
 
+    /**
+     * 検索結果が無く、ゼロ件エラーが発生すること
+     */
     @Test
     public void testCountZero() {
 
@@ -38,6 +43,9 @@ public class ItemSearchServiceTest {
         assertEquals("ME003", e.getMessageId());
     }
 
+    /**
+     * 1件ヒットすること
+     */
     @Test
     public void testCountOne() {
 
@@ -54,5 +62,17 @@ public class ItemSearchServiceTest {
         assertEquals("ペン", pages.getContent().get(0).getItemName());
         assertEquals(100, pages.getContent().get(0).getPrice());
         assertEquals("CD-A01", pages.getContent().get(0).getGroupid());
+    }
+
+    /**
+     * 検索結果が1001件以上ヒットで、1000件超過エラーが発生すること
+     */
+    @Test
+    public void testCountThousand() {
+
+        when(itemMapper.countAll(any())).thenReturn(1001L);
+        ItemSearchCriteria criteria = new ItemSearchCriteria("aaa", null, PageRequest.of(0, 3));
+        AppException e = assertThrows(AppException.class, () -> target.findAll(criteria));
+        assertEquals("ME002", e.getMessageId());
     }
 }
