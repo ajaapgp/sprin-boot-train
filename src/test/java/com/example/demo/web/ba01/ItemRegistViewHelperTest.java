@@ -24,6 +24,7 @@ public class ItemRegistViewHelperTest {
         " , "
     })
     public void test(String groupid, String label) {
+        
         assertEquals(label, itemRegistViewHelper.getGroupName(groupid));
     }
 }
