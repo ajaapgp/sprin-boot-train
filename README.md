@@ -69,13 +69,12 @@ Spring-Bootで、がっちり業務アプリケーション開発
 
 以下がインストール済みであること
 * JDK 11
-* git
+* gitbash
 * 統合開発環境（vscode or eclipse）
 
 ## 前提
 
-できれば、以下を動かしていること
-※mysqlデータベースが必須構成になっているため、インストールが必要
+できれば、以下の初級を先に動かしていること
 https://github.com/namickey/spring-boot2-try
 
 ## 使用するフレームワーク
