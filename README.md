@@ -25,7 +25,7 @@ Spring-Bootで、がっちり業務アプリケーション開発
 * 型変換、フォーマット変換
 * テーブルに1件インサート処理
 * プライマリーキーのシーケンス採番 `#未実装`
-* 登録サービスクラスに対する単体テスト `#未実装`
+* 登録サービスクラスに対する単体テスト
 
 ### 検索機能について
 以下の機能を実装する
@@ -192,11 +192,13 @@ C:.
 │          └─com
 │              └─example
 │                  └─demo
-│                      │  DemoApplicationTests.java
 │                      └─web
+│                          ├─ba01
+│                          │      ItemRegistServiceTest.java
+│                          │      ItemRegistViewHelperTest.java
+│                          │
 │                          └─ba02
 │                                  ItemSearchServiceTest.java
-
 ```
 
 ## 準備 githubからソースコードを取得
@@ -386,3 +388,4 @@ https://qiita.com/kirin1218/items/37ed388759a4c7d94b75
 
 Spring Frameworkを利用する実プロジェクトで活用できる設計・開発標準  
 https://fintan.jp/page/5311/  
+https://github.com/Fintan-contents/spring-sample-project/tree/main/sourcecode/web  

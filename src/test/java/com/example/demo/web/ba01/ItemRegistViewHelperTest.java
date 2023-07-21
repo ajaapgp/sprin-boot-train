@@ -14,7 +14,7 @@ public class ItemRegistViewHelperTest {
     private ItemRegistViewHelper itemRegistViewHelper;
     
     /**
-     * 4ケース実施
+     * 4ケース分をパラメータイズドテストとして一度に実施する
      */
     @ParameterizedTest
     @CsvSource({
@@ -24,7 +24,6 @@ public class ItemRegistViewHelperTest {
         " , "
     })
     public void test(String groupid, String label) {
-        
         assertEquals(label, itemRegistViewHelper.getGroupName(groupid));
     }
 }
