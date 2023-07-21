@@ -362,8 +362,9 @@ Ctrl + C
 * コンテナイメージとしてデプロイ
 * クラウド環境の自動構築及びデプロイ自動化
 
-## 次にjavascript + WEBAPIを学ぼう
-未着手  
+## 次にjavascript(vue3) + WEBAPIを学ぼう
+作成中  
+https://github.com/namickey/spring-boot2-vue3  
 
 ## 次にGitHubからAWSへの自動デプロイを学ぼう
 
