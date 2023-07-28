@@ -43,11 +43,11 @@ public class ItemRegistServiceTest {
     public void testOverSumPrice() {
         //準備：モック仕込み
         List<Item> list = new ArrayList<>();
-        list.add(new Item(1,"ペン", 1000, "CD-A01",LocalDate.now()));
-        list.add(new Item(2,"ペン", 1500, "CD-A01",LocalDate.now()));
+        list.add(new Item(1,"ペン", 1000, "CD-A01",LocalDate.now(), 0));
+        list.add(new Item(2,"ペン", 1500, "CD-A01",LocalDate.now(),0));
         when(itemMapper.findAllByItemName(any())).thenReturn(list);
         //準備：引数作成
-        Item item = new Item(5,"ペン", 1000, "CD-A01",LocalDate.now());
+        Item item = new Item(5,"ペン", 1000, "CD-A01",LocalDate.now(), 0);
         
         //テスト対象呼び出し及び例外アサート
         AppException e = assertThrows(AppException.class, () -> target.registItem(item));
@@ -64,7 +64,7 @@ public class ItemRegistServiceTest {
         //準備：モック仕込み
         when(itemMapper.insertItem(any())).thenThrow(DuplicateKeyException.class);
         //準備：引数作成
-        Item item = new Item(1,"ペン", 1000, "CD-A01",LocalDate.now());
+        Item item = new Item(1,"ペン", 1000, "CD-A01",LocalDate.now(), 0);
 
         //テスト対象呼び出し及び例外アサート
         AppException e = assertThrows(AppException.class, () -> target.registItem(item));
@@ -78,7 +78,7 @@ public class ItemRegistServiceTest {
     @Test
     public void testRegist(){
         //準備：引数作成
-        Item item = new Item(2,"ペン", 1000, "CD-A01",LocalDate.of(2023, 7, 1));
+        Item item = new Item(2,"ペン", 1000, "CD-A01",LocalDate.of(2023, 7, 1), 0);
         //準備：マッパー引数のキャプチャー
         ArgumentCaptor<Item> capItem = ArgumentCaptor.forClass(Item.class);
         doReturn(1).when(itemMapper).insertItem(capItem.capture());
@@ -91,5 +91,6 @@ public class ItemRegistServiceTest {
         assertEquals(1000, capItem.getValue().getPrice());
         assertEquals("CD-A01", capItem.getValue().getGroupid());
         assertEquals(LocalDate.of(2023, 7, 1), capItem.getValue().getRegistDate());
+        assertEquals(0, capItem.getValue().getVersionNo());
     }
 }

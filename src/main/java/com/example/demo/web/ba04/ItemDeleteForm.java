@@ -12,4 +12,11 @@ public class ItemDeleteForm {
      */
     @NotNull
     private Integer id;
+
+    /**
+     * バージョン番号
+     * 必須チェック
+     */
+    @NotNull
+    private Integer versionNo;
 }

@@ -44,6 +44,7 @@ public interface ItemMapper {
     /**
      * 1件削除
      * @param id Id
+     * @return 件数
      */
-    void delete(Integer id);
+    int delete(Integer id, Integer versionNo);
 }

@@ -1,5 +1,9 @@
 package com.example.demo.web.ba04;
 
+import java.util.Locale;
+
+import org.springframework.context.MessageSource;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +32,8 @@ public class BA0401Controller {
     private final ItemDeleteService itemDeleteService;
     /** item検索サービス */
     private final ItemSearchService itemSearchService;
+    /** メッセージ */
+    private final MessageSource messages;
     /** 1ページあたりの表示件数 */
     private static final int PAGE_SIZE = 5;
 
@@ -96,13 +102,22 @@ public class BA0401Controller {
      */
     @PostMapping("/WBA0401/delete")
     public String index(ItemSearchForm form, @Validated ItemDeleteForm deleteForm, BindingResult result, Model model) {
+        
         if (result.hasErrors()) {
-             return "BA0401/delete";
+            // 削除フォームに単項目エラーがあった場合には、予期しないエラーのため、システムエラー画面へ遷移する
+            return "error";
         }
 
         // 削除処理
-        itemDeleteService.deleteOne(deleteForm.getId());
-
+        try {
+            itemDeleteService.deleteOne(deleteForm.getId(), deleteForm.getVersionNo());
+        } catch (OptimisticLockingFailureException e) {
+            model.addAttribute("message", 
+                messages.getMessage(e.getMessage(), null, Locale.getDefault()));
+            return "BA0401/delete";
+        }
+        
+        // 検索処理
         try {
             Page<Item> pages = itemSearchService.findAll(form.toCriteria(PAGE_SIZE));
             if (pages != null) {
@@ -113,6 +128,7 @@ public class BA0401Controller {
             }
         } catch (AppException e){
             result.reject(e.getMessageId());
+            return "BA0401/delete";
         }
         return "BA0401/delete";
     }

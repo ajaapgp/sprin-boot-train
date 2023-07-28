@@ -10,6 +10,7 @@
     <div>
     管理者ロールのみ表示される画面
     </div>
+    <div th:text="${message}"></div>
     <form method="GET" th:action="@{/WBA0401/search}" action="./search.html" th:object="${itemSearchForm}">
         <div th:if="${#fields.hasGlobalErrors()}" th:errors="*{global}"></div>
         <div>
@@ -41,6 +42,7 @@
             <form method="POST" th:action="@{/WBA0401/delete}" action="./delete.html"
                 th:object="${itemDeleteForm}" style="display: inline;">
                 <input type="hidden" name="id" th:value="${item.id}" />
+                <input type="hidden" name="versionNo" th:value="${item.versionNo}" />
                 <button type="submit">削除</button>
             </form>
         </li>

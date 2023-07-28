@@ -8,13 +8,15 @@
             item_name,
             price,
             groupid,
-            regist_date
+            regist_date,
+            version_no
         ) values(
             #{id},
             #{itemName},
             #{price},
             #{groupid},
-            #{registDate}
+            #{registDate},
+            0
         )
     </insert>
 
@@ -39,7 +41,8 @@
             item_name,
             price,
             groupid,
-            regist_date
+            regist_date,
+            version_no
         from
             item
         <include refid="criteria" />
@@ -80,5 +83,6 @@
             item
         where
             id = #{id}
+            and version_no = #{versionNo}
     </delete>
 </mapper>
