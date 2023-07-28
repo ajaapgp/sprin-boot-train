@@ -1,0 +1,15 @@
+package com.example.demo.web.ba04;
+
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+
+@Data
+public class ItemDeleteForm {
+    /**
+     * ID
+     * 必須チェック
+     */
+    @NotNull
+    private Integer id;
+}

@@ -40,4 +40,10 @@ public interface ItemMapper {
      * @return itemリスト
      */
     List<Item> findAllByItemName(String itemName);
+
+    /**
+     * 1件削除
+     * @param id Id
+     */
+    void delete(Integer id);
 }
