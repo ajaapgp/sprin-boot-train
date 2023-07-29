@@ -47,4 +47,11 @@ public interface ItemMapper {
      * @return 件数
      */
     int delete(Integer id, Integer versionNo);
+
+    /**
+     * 1件検索
+     * @param id Id
+     * @return Item
+     */
+    Item findById(Integer id);
 }

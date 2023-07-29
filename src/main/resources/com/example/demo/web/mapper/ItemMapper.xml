@@ -77,6 +77,7 @@
             item_name = #{itemName}
     </select>
 
+    <!-- 1件削除 -->
     <delete id="delete">
         delete
         from
@@ -85,4 +86,19 @@
             id = #{id}
             and version_no = #{versionNo}
     </delete>
+
+    <!-- 1件検索 -->
+    <select id="findById" resultType="com.example.demo.entity.Item">
+        select
+            id,
+            item_name,
+            price,
+            groupid,
+            regist_date,
+            version_no
+        from
+            item
+        where
+            id = #{id}
+    </select>
 </mapper>

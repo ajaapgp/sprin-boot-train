@@ -16,10 +16,10 @@ import com.example.demo.entity.Item;
 import lombok.RequiredArgsConstructor;
 
 /**
- * item検索画面コントローラ
+ * item照会画面コントローラ
  * 
- * 検索画面処理表示時には検索条件をリセットして、検索結果を初期表示する。
- * 検索画面処理表示以外では、検索条件をセッションスコープ保持する。
+ * 照会画面処理表示時には検索条件をリセットして、検索結果を初期表示する。
+ * 照会画面処理表示以外では、検索条件をセッションスコープ保持する。
  * 1ページにページングを行う。
  */
 @Controller
@@ -37,12 +37,12 @@ public class BA0201Controller {
     private static final int PAGE_SIZE = 5;
 
     /**
-     * item検索画面を初期表示する。検索条件が未指定で検索した結果を指定件数分だけ表示する
+     * item照会画面を初期表示する。検索条件が未指定で検索した結果を指定件数分だけ表示する
      * 初期表示と検索条件が未指定の場合のページング
      * @param form ItemSearchForm
      * @param result BindingResult
      * @param model Model
-     * @return item検索画面
+     * @return item照会画面
      */
     @GetMapping("/WBA0201/index")
     public String index(@Validated ItemSearchForm form, BindingResult result, Model model) {
@@ -70,7 +70,7 @@ public class BA0201Controller {
      * @param form ItemSearchForm
      * @param result BindingResult
      * @param model Model
-     * @return item検索画面
+     * @return item照会画面
      */
     @GetMapping("/WBA0201/search")
     public String search(@Validated ItemSearchForm form, BindingResult result, Model model) {
