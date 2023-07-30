@@ -54,4 +54,11 @@ public interface ItemMapper {
      * @return Item
      */
     Item findById(Integer id);
+
+    /**
+     * 1件更新
+     * @param item Item
+     * @return 件数
+     */
+    int updateById(Item item);
 }

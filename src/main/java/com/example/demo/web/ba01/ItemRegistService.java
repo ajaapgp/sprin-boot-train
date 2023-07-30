@@ -31,7 +31,14 @@ public class ItemRegistService {
         
         // 同一ItemNameの合計priceが3000円以上の場合、業務エラー
         List<Item> list = mapper.findAllByItemName(item.getItemName());
-        Integer totalPrice = item.getPrice();
+        
+        Integer totalPrice = 0;
+        if (item.getPrice() == null) {
+            totalPrice = 0;
+        } else {
+            totalPrice = item.getPrice();
+        }
+
         for (Item item2 : list) {
             totalPrice += item2.getPrice();
         }

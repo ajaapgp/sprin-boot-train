@@ -41,9 +41,9 @@ public class ItemForm {
 
     /**
      * price
-     * 最大値10,000チェック
+     * 最大値5,000チェック
      */
-    @Range(max=10000)
+    @Range(max=5000)
     private Integer price;
 
     /**
@@ -67,7 +67,7 @@ public class ItemForm {
     @AssertTrue(message = "{ME005}")
     public boolean isBunguPrice() {
         if (ItemGroup.BUNGU.getCode().equals(groupid)) {
-            if (price >= 2000) {
+            if (price != null && price >= 2000) {
                 return false;
             }
         }

@@ -32,9 +32,16 @@
     </div>
 
     <ul th:each="item : ${itemList}">
-        <li><a th:text="${item.id}" th:href="@{/WBA0301/index(id=${item.id})}" href="../BA0301/index.html">1</a>:
-            <span th:text="${item.itemName}">ペン</span>:
-            <span th:text="${item.price}">100円</span>円</li>
+        <li>
+            <a th:text="${item.id}" th:href="@{/WBA0301/index(id=${item.id})}" href="../BA0301/index.html">1</a>:
+            <span th:text="${item.itemName}" style="display: inline-block;width: 150px;">ペン</span>:
+            <div style="display: inline-block;width: 100px;">
+                <span th:text="${item.price}">100円</span>円
+            </div>
+            <th:block sec:authorize-url="/WBA0501">
+                <a th:href="@{/WBA0501/index(id=${item.id})}" href="../BA0501/update.html">更新</a>
+            </th:block>
+        </li>
     </ul>
 
     <div th:if="${pages}" class="paging">

@@ -101,4 +101,22 @@
         where
             id = #{id}
     </select>
+
+    <!-- 1件更新 -->
+    <update id="updateById">
+        update
+            item
+        set
+            <if test="itemName != null">
+                item_name = #{itemName},
+            </if>
+            price = #{price},
+            <if test="groupid != null">
+                groupid = #{groupid},
+            </if>
+            version_no = #{versionNo} + 1
+        where
+            id = #{id}
+            and version_no = #{versionNo}
+    </update>
 </mapper>

@@ -1,5 +1,7 @@
 package com.example.demo.core.security;
 
+import java.util.List;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
@@ -31,12 +33,12 @@ public class MockUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if ("root".equals(username)) {
-            // rootユーザには、システム権限ロールを付与する
+        if (List.of("root","data").contains(username.toLowerCase())) {
+            // rootユーザ,dataユーザ,managerユーザには、データ管理者権限ロールを付与する
             return User.builder()
                 .username(username)
                 .password(passwordEncoder().encode(username)) // パスワードはユーザIDと同じ
-                .roles("USER","SYSTEM")
+                .roles("USER","DATA_MANAGER")
                 .build();
         }
         // 一般ユーザには、ユーザロールを付与する

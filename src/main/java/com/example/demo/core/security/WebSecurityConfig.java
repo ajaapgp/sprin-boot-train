@@ -19,8 +19,8 @@ public class WebSecurityConfig {
                 .mvcMatchers("/h2-console/**").permitAll()
                 // ヘルスチェックURLは認証しない
                 .mvcMatchers("/actuator/health").permitAll()
-                // item削除画面はSYSTEMロールを保持しているユーザのみアクセス可能
-                .mvcMatchers("/WBA0401/**").hasRole("SYSTEM")
+                // item更新画面とitem削除画面はDATA_MANAGERロールを保持しているユーザのみアクセス可能
+                .mvcMatchers("/WBA0401/**", "/WBA0501/**").hasRole("DATA_MANAGER")
                 // その他は認証する
                 .anyRequest().authenticated()
                 // ログイン
