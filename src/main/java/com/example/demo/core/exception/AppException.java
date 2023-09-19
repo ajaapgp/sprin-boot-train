@@ -25,6 +25,6 @@ public class AppException extends RuntimeException {
 	
 	/**
 	 * コンストラクタ
-	 * @pa
+	 * @param
 	 */
 }
