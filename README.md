@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # spring-boot2-train
 
 Spring-Bootで、がっちり業務アプリケーション開発
@@ -425,3 +426,6 @@ https://qiita.com/kirin1218/items/37ed388759a4c7d94b75
 Spring Frameworkを利用する実プロジェクトで活用できる設計・開発標準  
 https://fintan.jp/page/5311/  
 https://github.com/Fintan-contents/spring-sample-project/tree/main/sourcecode/web  
+=======
+# sprin-boot-train
+>>>>>>> branch 'main' of https://github.com/ajaapgp/sprin-boot-train.git
