@@ -9,7 +9,7 @@ import ch.qos.logback.access.spi.IAccessEvent;
  * ユーザID変換
  */
 public class UseridAccessConverter extends AccessConverter {
-
+	
 	@Override
 	public String convert(IAccessEvent event) {
 		HttpServletRequest request = event.getRequest();

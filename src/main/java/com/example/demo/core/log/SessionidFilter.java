@@ -13,12 +13,9 @@ import org.slf4j.MDC;
 import org.springframework.boot.web.servlet.filter.OrderedFilter;
 import org.springframework.stereotype.Component;
 
-/**
- * セッションIDフィルター
- */
 @Component
 public class SessionidFilter implements OrderedFilter {
-
+	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -36,7 +33,7 @@ public class SessionidFilter implements OrderedFilter {
 			MDC.remove("sessionid");
 		}
 	}
-
+	
 	@Override
 	public int getOrder() {
 		return 1;

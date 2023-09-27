@@ -25,6 +25,36 @@ public class AppException extends RuntimeException {
 	
 	/**
 	 * コンストラクタ
-	 * @param
+	 * @param messageId メッセージID
+	 * @param cause 例外
 	 */
+	public AppException(String messageId, Throwable cause) {
+		super(cause);
+		this.messageId = messageId;
+	}
+	
+	/**
+     * コンストラクタ
+     * @param messageId メッセージID
+     * @param field フィールド
+     */
+	public AppException(String messageId) {
+		this.messageId = messageId;
+	}
+	
+	/**
+     * メッセージID取得
+     * @return
+     */
+	public String getMessageId() {
+		return this.messageId;
+	}
+	
+	/**
+     * フィールド取得
+     * @return
+     */
+	public String getField() {
+		return this.field;
+	}
 }

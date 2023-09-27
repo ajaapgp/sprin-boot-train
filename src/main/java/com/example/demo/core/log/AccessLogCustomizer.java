@@ -11,10 +11,10 @@ import ch.qos.logback.access.tomcat.LogbackValve;
  */
 @Configuration
 public class AccessLogCustomizer implements WebServerFactoryCustomizer<ConfigurableTomcatWebServerFactory> {
-
+	
 	@Override
 	public void customize(ConfigurableTomcatWebServerFactory factory) {
-		// tomcatアクセスログ追加
+		// tomcat アクセスログ追加
 		factory.addEngineValves(new LogbackValve());
 	}
 }
